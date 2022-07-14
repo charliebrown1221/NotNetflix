@@ -1,3 +1,4 @@
+from operator import mod
 from django.db import models
 from authentication.models import User
 
@@ -10,3 +11,9 @@ class Movies(models.Model):
        year=models.CharField(max_length=500)
        overview=models.CharField(max_length=1000)
        poster_path=models.CharField(max_length=500)
+       
+
+class FavoriteMovies(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    movie =models.ForeignKey(Movies, on_delete=models.CASCADE)
+    

@@ -45,16 +45,16 @@ def edit_movie(request, pk):
     return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view([ 'PATCH'])
-@permission_classes([IsAuthenticated])
-def edit_movie(request, pk):
-    print(
-        'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-    movie=get_object_or_404(Movies,pk=pk,)
-    if request.method == 'PATCH':
-        serializer = MoviesSerializer(movie, data=request.data, partial=True) 
-        if serializer.is_valid():
-            serializer.save(user=request.user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+# @api_view([ 'PATCH'])
+# @permission_classes([IsAuthenticated])
+# def favorite_movie(request, pk):
+#     print(
+#         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
+#     movie=get_object_or_404(Movies,pk=pk,)
+#     if request.method == 'PATCH':
+#         serializer = MoviesSerializer(movie, data=request.data, partial=True) 
+#         if serializer.is_valid():
+#             serializer.save(user=request.user)
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+#     return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
