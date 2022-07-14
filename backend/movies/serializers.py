@@ -3,8 +3,8 @@ from rest_framework import serializers
 from .models import FavoriteMovies, Movies
 
 class MoviesSerializer(serializers.ModelSerializer):
-    model = Movies
     class Meta:
+        model = Movies
         fields =['user', 'name','overview','year','poster_path']
         depth = 1
     
@@ -12,7 +12,7 @@ class MoviesSerializer(serializers.ModelSerializer):
 
 
 class FavoriteMoviesSerializer(serializers.ModelSerializer):
-    model = FavoriteMovies
     class Meta:
+        model = FavoriteMovies
         fields =['user_id', 'movie_id']
         depth = 1
