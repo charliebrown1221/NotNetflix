@@ -38,7 +38,7 @@ def edit_movie(request, pk):
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     movie=get_object_or_404(Movies,pk=pk,)
     if request.method == 'PUT':
-         serializer= CommentSerializer(movie,data=request.data)
+         serializer= MoviesSerializer(movie,data=request.data)
          if serializer.is_valid(raise_exception=True):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_200_OK)
