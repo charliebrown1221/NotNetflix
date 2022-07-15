@@ -4,7 +4,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Movies
-from .serializers import MoviesSerializer
+from .serializers import FavoriteMoviesSerializer, MoviesSerializer
+from .models import FavoriteMovies
 
 
 
@@ -45,16 +46,13 @@ def edit_movie(request, pk):
     return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
-# @api_view([ 'PATCH'])
-# @permission_classes([IsAuthenticated])
-# def favorite_movie(request, pk):
-#     print(
-#         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-#     movie=get_object_or_404(Movies,pk=pk,)
-#     if request.method == 'PATCH':
-#         serializer = MoviesSerializer(movie, data=request.data, partial=True) 
-#         if serializer.is_valid():
-#             serializer.save(user=request.user)
-#         return Response(serializer.data, status=status.HTTP_200_OK)
-#     return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+@api_view([ 'GET'])
+@permission_classes([IsAuthenticated])
+def favorite_movie(request, movie_id):
+    print(
+        'User ', f"{request.user.id} {request.user.email} {request.user.username}")
+    if  request.method == 'GET':
+          movie = FavoriteMovies.objects.all(movie_id=movie_id)
+          serializer = FavoriteMoviesSerializer(movie,many=True)
+          return Response(serializer.data, status=status.HTTP_200_OK)
 

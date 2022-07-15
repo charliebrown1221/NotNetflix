@@ -9,6 +9,7 @@ class Movies(models.Model):
     #    id = models.IntegerField('primary_key=True')
        name=models.CharField(max_length=500)
        year=models.CharField(max_length=500)
+       genres=models.CharField(max_length=500)
        overview=models.CharField(max_length=1000)
        poster_path=models.CharField(max_length=500)
        

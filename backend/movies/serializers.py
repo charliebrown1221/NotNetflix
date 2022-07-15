@@ -5,7 +5,7 @@ from .models import FavoriteMovies, Movies
 class MoviesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movies
-        fields =['user', 'name','overview','year','poster_path']
+        fields =['user', 'name','overview','year','genres','poster_path']
         depth = 1
     
         
