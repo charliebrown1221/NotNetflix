@@ -6,5 +6,5 @@ from .models import FavoriteMovies
 class FavoriteMoviesSerializer(serializers.ModelSerializer):
     class Meta:
         model = FavoriteMovies
-        fields =['user_id', 'movie_id']
+        fields =['id','user_id','movie']
         depth = 1
