@@ -45,6 +45,14 @@ def edit_movie(request, pk):
             return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view([ 'DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_movie(request, pk):
+ movie=get_object_or_404(Movies,pk=pk,)
+ if request.method == 'DELETE':
+    movie.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 
 

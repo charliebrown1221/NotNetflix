@@ -4,10 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from authentication.models import User
-
 from movies.models import Movies
-from .models import FavoriteMovies
-from .serializers import FavoriteMoviesSerializer
 from movies.serializers import MoviesSerializer
 
 # Create your views here.
