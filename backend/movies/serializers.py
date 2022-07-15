@@ -1,6 +1,6 @@
 from dataclasses import fields
 from rest_framework import serializers
-from .models import FavoriteMovies, Movies
+from .models import  Movies
 
 class MoviesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,8 +11,4 @@ class MoviesSerializer(serializers.ModelSerializer):
         
 
 
-class FavoriteMoviesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FavoriteMovies
-        fields =['user_id', 'movie_id']
-        depth = 1
+

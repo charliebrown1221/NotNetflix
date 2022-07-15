@@ -1,7 +1,9 @@
 from django.db import models
+from movies.models import Movies
+from authentication.models import User
 
-from backend.movies.models import FavoriteMovies
 
 # Create your models here.
-class Favorites(models.Model):
-    favorite_movies=models.ForeignKey(FavoriteMovies, on_delete=models.CASCADE)
+class FavoriteMovies(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    movie =models.ManyToManyField(Movies)
