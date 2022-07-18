@@ -11,6 +11,7 @@ class Movies(models.Model):
        genres=models.CharField(max_length=500)
        overview=models.CharField(max_length=1000)
        poster_path=models.CharField(max_length=500)
+       fileName=models.CharField(max_length=500)
        favorites= models.ManyToManyField(User , related_name="favorites")
 
        def __str__(self) -> str:
