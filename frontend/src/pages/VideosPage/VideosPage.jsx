@@ -1,7 +1,9 @@
 import React,{useEffect,useState} from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import "./VideoPage.css"
 import Videos from "../../components/Videos/Videos"
+import Upload from "../../components/Upload/Upload"
 
 const VideoPage = (props) => {
     
@@ -60,10 +62,11 @@ const VideoPage = (props) => {
     
     return ( 
     <>
+    <h1 className="user">Welcome {user.username}</h1>
     <div>
     <Videos getAllMoviesData={getAllMoviesData} />
     </div>
-    
+    {/* <Upload uploadMovie={uploadMovie} getMovieData={getMovieData}/> */}
     </> 
     );
 }

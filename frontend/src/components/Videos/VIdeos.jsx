@@ -10,7 +10,7 @@ const Videos = ({getAllMoviesData})=> {
       <div>
         {getAllMoviesData.map((el)=>{
       return<> 
-      <div >{el.poster_path}</div>
+      <div ><img src={`https://image.tmdb.org/t/p/w200${el.poster_path}`} alt="" /></div>
       <div >{el.name}  </div>
       <div >{el.year}</div>
       <div >{el.genres}</div>
