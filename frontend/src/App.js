@@ -6,7 +6,7 @@ import "./App.css";
 // import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import VideoPage from "./pages/VideosPage/Videos";
+import VideoPage from "./pages/VideosPage/VideosPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
