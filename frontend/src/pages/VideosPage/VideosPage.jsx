@@ -19,7 +19,7 @@ const VideoPage = (props) => {
 
     async function getData(){
         try {
-            let response = await axios.get('https://api.themoviedb.org/3/search/movie?api_key=103bc152e61ef0926efa2aed8264d9e3&query=blankman')
+            let response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=103bc152e61ef0926efa2aed8264d9e3&query=bat`)
             console.log("get DB data: ", response.data.results)
             setGetMovieData(response.data.results)
             
@@ -63,10 +63,11 @@ const VideoPage = (props) => {
     return ( 
     <>
     <h1 className="user">Welcome {user.username}</h1>
+    <Upload />
     <div>
     <Videos getAllMoviesData={getAllMoviesData} />
     </div>
-    {/* <Upload uploadMovie={uploadMovie} getMovieData={getMovieData}/> */}
+    
     </> 
     );
 }
