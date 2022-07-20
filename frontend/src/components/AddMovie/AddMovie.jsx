@@ -1,47 +1,111 @@
 import React,{useState} from "react";
+import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+import AWS from 'aws-sdk'
+import {Key_Id, Secret_Access_Key} from "./apiKeys"
 
+window.Buffer = window.Buffer || require("buffer").Buffer;
+
+
+const S3_BUCKET ='notnetflix2';
+const REGION ='us-east-1';
+
+
+AWS.config.update({
+    accessKeyId:    Key_Id,
+    secretAccessKey: Secret_Access_Key
+})
 
 const AddMovie = (props) => {
 
  const [addName,setAddName]=useState('')
+ const [user, token] = useAuth();
+ const [progress , setProgress] = useState(0);
+const [selectedFile, setSelectedFile] = useState(null);
+const [movieDataToUpload, setMovieDataToUpload] = useState({})
 
 
+const setMovieDetails=(movie)=>{
+    let newMovie ={
+        "name":movie.title,
+        "overview": movie.overview,
+        "year":movie.release_date,
+        "genres": movie.genre_ids,
+        "poster_path":movie.poster_path ,
+        "fileName": selectedFile.name,
+        };
 
+        setMovieDataToUpload(newMovie)
+
+}
 
   function handelPost(event){
-        event.preventDefault();
-        props.getData(addName)
-        console.log(props.getData)
-        {props.getData.map((el)=>{
-            return 
-            
-            })}
-        // let newMovie ={
-        // "name": 
-        // "overview": 
-        // "year": 
-        // "genres": 
-        // "poster_path": 
-        // "fileName": 
-        // };
-        // console.log(newMovie);
-        // props.uploadMovie(newMovie)
+    event.preventDefault()
+    props.getData(addName)
+       
+        
+        
+
     }
+        const uploadMovie= async ()=>{
+           
+            try {
+                let response = await axios.post('http://127.0.0.1:8000/api/movies/add/',movieDataToUpload, {
+                    headers: {
+                      Authorization: "Bearer " + token,
+                    },
+                  });
+                   if (response.status===201){
+                    props.getAllMovies()
+                   }
+        
+            } catch (error) {
+                console.log("uploadMovie" ,error.response.data)
+            }
+        }
+       
+    
+        const handleFileInput = (e) => {
+            setSelectedFile(e.target.files[0]);
+        }
+    
+        const uploadFile = async () => {
+    
+          
+            console.log(selectedFile)
+            var base64data = await selectedFile.arrayBuffer()
+            const myBucket = new AWS.S3.ManagedUpload({
+                params: { Bucket: S3_BUCKET, Key:  selectedFile.name, ContentType: 'video/mp4',Body:  base64data},
+                region: REGION,
+            })
+            myBucket.send()
+            console.log("sending?")
+            
+        }
 
-
-
+        const uploadBoth = ()=>{
+            //uploadFile()
+            uploadMovie()
+        }
+    
+    
+      
 
     return (
          <>
+         
          <form onSubmit={handelPost}>
             <div>
           
               
               <input  type="text" value={addName} onChange={(event)=> setAddName(event.target.value)} />
-              <button type="submit">Create</button>
+              <button type="submit">Get Movie Details</button>
               </div>
             
         </form>
+        {props.movieData.map(el => <div><button onClick={()=>setMovieDetails(el)}>{el.title}</button></div>)}
+        <input type="file" onChange={handleFileInput}/>
+            <button onClick={() => uploadBoth()}> Upload </button>
          </> 
     );
 }

@@ -39,21 +39,7 @@ const VideoPage = (props) => {
         }
     }
 
-   async function uploadMovie(){
-    try {
-        let response = await axios.post('http://127.0.0.1:8000/api/movies/add/',{}, {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          });
-           if (response.status===201){
-            getAllMovies()
-           }
-
-    } catch (error) {
-        console.log("uploadMovie" ,error.response.data)
-    }
-}
+ 
 
     
     
@@ -64,8 +50,8 @@ const VideoPage = (props) => {
     return ( 
     <>
    <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData}/> <h1 className="user">Welcome {user.username}</h1>
-   <AddMovie uploadMovie={uploadMovie} getData={getData}/>
-    <Upload />
+   <AddMovie movieData={getMovieData} getData={getData} getAllMovies={getAllMovies} />
+ 
     <div>
     <Videos getAllMoviesData={getAllMoviesData} />
     </div>

@@ -2,7 +2,7 @@ import React , {useState} from 'react';
 import { uploadFile } from 'react-s3';
 import S3 from 'react-aws-s3'
 import AWS from 'aws-sdk'
-import {Key_Id, Secret_Access_Key} from "./apiKeys"
+import {Key_Id, Secret_Access_Key} from "../../components/AddMovie/apiKeys"
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -57,7 +57,7 @@ const Upload = () => {
 
 
     return <div>
-        <div>File Upload Progress is {progress}%</div>
+        
         <input type="file" onChange={handleFileInput}/>
         <button onClick={() => uploadFile()}> Upload </button>
     </div>
