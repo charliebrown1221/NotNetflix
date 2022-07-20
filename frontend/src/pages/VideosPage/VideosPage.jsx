@@ -4,7 +4,8 @@ import useAuth from "../../hooks/useAuth";
 import "./VideoPage.css"
 import Videos from "../../components/Videos/Videos"
 import Upload from "../../components/Upload/Upload"
-
+import SearchBar from "../../components/SearchBar/SearchBar"
+import AddMovie from "../../components/AddMovie/AddMovie";
 const VideoPage = (props) => {
     
     const[getMovieData, setGetMovieData]=useState([])
@@ -17,9 +18,9 @@ const VideoPage = (props) => {
         getAllMovies()
       }, []);
 
-    async function getData(){
+    async function getData(getInfo){
         try {
-            let response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=103bc152e61ef0926efa2aed8264d9e3&query=bat`)
+            let response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=103bc152e61ef0926efa2aed8264d9e3&query=${getInfo}`)
             console.log("get DB data: ", response.data.results)
             setGetMovieData(response.data.results)
             
@@ -40,7 +41,7 @@ const VideoPage = (props) => {
 
    async function uploadMovie(){
     try {
-        let response = await axios.post('http://127.0.0.1:8000/api/movies/add/', {
+        let response = await axios.post('http://127.0.0.1:8000/api/movies/add/',{}, {
             headers: {
               Authorization: "Bearer " + token,
             },
@@ -62,7 +63,8 @@ const VideoPage = (props) => {
     
     return ( 
     <>
-    <h1 className="user">Welcome {user.username}</h1>
+   <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData}/> <h1 className="user">Welcome {user.username}</h1>
+   <AddMovie uploadMovie={uploadMovie} />
     <Upload />
     <div>
     <Videos getAllMoviesData={getAllMoviesData} />
