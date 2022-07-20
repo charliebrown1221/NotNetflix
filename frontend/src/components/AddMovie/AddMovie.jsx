@@ -9,7 +9,13 @@ const AddMovie = (props) => {
 
 
   function handelPost(event){
-        // event.preventDefault();
+        event.preventDefault();
+        props.getData(addName)
+        console.log(props.getData)
+        {props.getData.map((el)=>{
+            return 
+            
+            })}
         // let newMovie ={
         // "name": 
         // "overview": 

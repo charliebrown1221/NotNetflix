@@ -64,7 +64,7 @@ const VideoPage = (props) => {
     return ( 
     <>
    <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData}/> <h1 className="user">Welcome {user.username}</h1>
-   <AddMovie uploadMovie={uploadMovie} />
+   <AddMovie uploadMovie={uploadMovie} getData={getData}/>
     <Upload />
     <div>
     <Videos getAllMoviesData={getAllMoviesData} />
