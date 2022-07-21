@@ -2,7 +2,10 @@ import React,{useState} from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import AWS from 'aws-sdk'
+import"./AddMovie.css"
 import {Key_Id, Secret_Access_Key} from "./apiKeys"
+import {genres} from "../Genres/Genres"
+
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -26,17 +29,31 @@ const [movieDataToUpload, setMovieDataToUpload] = useState({})
 
 const setMovieDetails=(movie)=>{
 
-    // let results = helperFromOtherFile(movie.genres)
+    function helperFromOtherFile(){
+       return genres.filter((el) =>{
+            if(movie.genre_ids.includes(el.id))
+            {
+                console.log(el.name)
+                console.log(el.id, movie.genre_ids)
+                return true
+            }
+        }).map(el=>el.name).join(", ")
+
+        }
+
+    let results = helperFromOtherFile(movie.genres)
+    
     let newMovie ={
         "name":movie.title,
         "overview": movie.overview,
         "year":movie.release_date,
-        "genres": '',
+        "genres": results,
         "poster_path":movie.poster_path
         };
-
-        setMovieDataToUpload(newMovie)
         console.log(newMovie)
+        console.log("result" ,results)
+        setMovieDataToUpload(newMovie)
+       
 }
 
   function handelPost(event){
@@ -98,15 +115,14 @@ const setMovieDetails=(movie)=>{
          
          <form onSubmit={handelPost}>
             <div>
-          
-              
+             <h1 className="text-color">Upload can take up to 5 minutes</h1>
               <input  type="text" value={addName} onChange={(event)=> setAddName(event.target.value)} />
               <button type="submit">Get Movie Details</button>
               </div>
             
         </form>
         {props.movieData.map(el => <div><button onClick={()=>setMovieDetails(el)}>{el.title} {el.release_date}</button></div>)}
-        <input type="file" onChange={handleFileInput}/>
+        <input className="text-color" type="file" onChange={handleFileInput}/>
             <button onClick={() => uploadBoth()}> Upload </button>
          </> 
     );

@@ -1,6 +1,6 @@
 /* HTML CSSResult Skip Results Iframe
 EDIT ON */
-body, html{
+/* body, html{
   height:100%;
 }
 body{
@@ -22,7 +22,7 @@ h1{
 p{
   font-size:1em;
   line-height:1.5em;
-}
+} */
 .wrapper{
   overflow:hidden;
 }
@@ -80,11 +80,12 @@ nav a{
 nav a:hover{
   background:#111;
 }
-label{
+.menu{
   display:block;
   font-family:'helvetica neue', helvetica, arial, sans-serif;
   font-weight:700;
   background:red;
+  box-shadow: 2px 2px 1px gray;
   width:42px;
   height:42px;
   line-height:42px;
@@ -93,8 +94,8 @@ label{
   font-size:2em;
   line-height:1.1em;
   position:fixed;
-  top:10px;
-  left:10px;
+  top:191px;
+  left:250px;
   -moz-transition:all 200ms ease-in;
   -webkit-transition:all 200ms ease-in;
   -o-transition:all 200ms ease-in;

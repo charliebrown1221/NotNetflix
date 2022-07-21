@@ -6,10 +6,20 @@ import "./NavBar.css";
 import logo from './assets/NotNetflix.jpg'
 
 const Navbar = () => {
+  
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
-  return (
+  
+  
+    
+  
+ 
+  
+  return (<>
+    
+
     <div className="navBar">
+      
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
@@ -23,10 +33,14 @@ const Navbar = () => {
           ) : (
             <button onClick={() => navigate("/login")}>Login</button>
           )}
+          
         </li>
       </ul>
+    <div className="user">{user ? <p >Welcome {user.username}</p> : null}</div>
       
-    </div>
+       
+      
+    </div></>
   );
 };
 

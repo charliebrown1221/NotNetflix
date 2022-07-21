@@ -4,8 +4,8 @@ import useAuth from "../../hooks/useAuth";
 import "./VideoPage.css"
 import Videos from "../../components/Videos/Videos"
 import SearchBar from "../../components/SearchBar/SearchBar"
-import AddMovie from "../../components/AddMovie/AddMovie";
 import Menu from "../../components/Menu/Menu";
+import Navbar from "../../components/NavBar/NavBar";
 const VideoPage = (props) => {
     
     const[getMovieData, setGetMovieData]=useState([])
@@ -48,8 +48,9 @@ const VideoPage = (props) => {
     
     return ( 
     <>
+    {/* <Navbar /> */}
     <Menu  getMovieData={getMovieData} getData={getData} getAllMovies={getAllMovies}  />
-    <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData}/> <h1 className="user">Welcome {user.username}</h1>
+    <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData}/> 
    {/* <AddMovie movieData={getMovieData} getData={getData} getAllMovies={getAllMovies} /> */}
  
     <div>

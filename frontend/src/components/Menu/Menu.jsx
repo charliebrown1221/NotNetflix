@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import './Menu.css'
 import AddMovie from '../AddMovie/AddMovie'
 
@@ -13,9 +13,10 @@ const Menu = (props) => {
         <div className="wrapper">
 
         <input type="checkbox" id="navigation" />
+        <div className="menu">
         <label for="navigation">
             +
-        </label>
+        </label></div>
         
         <nav>
             <ul>
