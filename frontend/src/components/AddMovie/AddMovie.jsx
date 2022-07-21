@@ -18,25 +18,25 @@ AWS.config.update({
 
 const AddMovie = (props) => {
 
- const [addName,setAddName]=useState('')
- const [user, token] = useAuth();
- const [progress , setProgress] = useState(0);
+const [addName,setAddName]=useState('')
+const [user, token] = useAuth();
 const [selectedFile, setSelectedFile] = useState(null);
 const [movieDataToUpload, setMovieDataToUpload] = useState({})
 
 
 const setMovieDetails=(movie)=>{
+
+    // let results = helperFromOtherFile(movie.genres)
     let newMovie ={
         "name":movie.title,
         "overview": movie.overview,
         "year":movie.release_date,
-        "genres": movie.genre_ids,
-        "poster_path":movie.poster_path ,
-        "fileName": selectedFile.name,
+        "genres": '',
+        "poster_path":movie.poster_path
         };
 
         setMovieDataToUpload(newMovie)
-
+        console.log(newMovie)
 }
 
   function handelPost(event){
@@ -48,9 +48,11 @@ const setMovieDetails=(movie)=>{
 
     }
         const uploadMovie= async ()=>{
-           
+
+            let newMovie = {...movieDataToUpload, "fileName":selectedFile.name}
+           console.log(newMovie)
             try {
-                let response = await axios.post('http://127.0.0.1:8000/api/movies/add/',movieDataToUpload, {
+                let response = await axios.post('http://127.0.0.1:8000/api/movies/add/',newMovie, {
                     headers: {
                       Authorization: "Bearer " + token,
                     },
@@ -84,7 +86,7 @@ const setMovieDetails=(movie)=>{
         }
 
         const uploadBoth = ()=>{
-            //uploadFile()
+            // uploadFile()
             uploadMovie()
         }
     
@@ -103,7 +105,7 @@ const setMovieDetails=(movie)=>{
               </div>
             
         </form>
-        {props.movieData.map(el => <div><button onClick={()=>setMovieDetails(el)}>{el.title}</button></div>)}
+        {props.movieData.map(el => <div><button onClick={()=>setMovieDetails(el)}>{el.title} {el.release_date}</button></div>)}
         <input type="file" onChange={handleFileInput}/>
             <button onClick={() => uploadBoth()}> Upload </button>
          </> 

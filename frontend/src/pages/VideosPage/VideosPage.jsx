@@ -3,9 +3,9 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import "./VideoPage.css"
 import Videos from "../../components/Videos/Videos"
-import Upload from "../../components/Upload/Upload"
 import SearchBar from "../../components/SearchBar/SearchBar"
 import AddMovie from "../../components/AddMovie/AddMovie";
+import Menu from "../../components/Menu/Menu";
 const VideoPage = (props) => {
     
     const[getMovieData, setGetMovieData]=useState([])
@@ -14,7 +14,6 @@ const VideoPage = (props) => {
     const [user, token] = useAuth();
 
     useEffect(() => {
-        getData()
         getAllMovies()
       }, []);
 
@@ -49,8 +48,9 @@ const VideoPage = (props) => {
     
     return ( 
     <>
-   <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData}/> <h1 className="user">Welcome {user.username}</h1>
-   <AddMovie movieData={getMovieData} getData={getData} getAllMovies={getAllMovies} />
+    <Menu  getMovieData={getMovieData} getData={getData} getAllMovies={getAllMovies}  />
+    <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData}/> <h1 className="user">Welcome {user.username}</h1>
+   {/* <AddMovie movieData={getMovieData} getData={getData} getAllMovies={getAllMovies} /> */}
  
     <div>
     <Videos getAllMoviesData={getAllMoviesData} />
