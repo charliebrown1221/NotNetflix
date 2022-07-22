@@ -1,0 +1,20 @@
+.movie{
+    display: grid;
+    /* flex-wrap: wrap; */
+    
+    float: left;
+}
+.info{
+    position: fixed; /* could be absolute */
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+    width: 900px;
+    height: 350px;
+    background-color: rgb(55, 55, 55);
+    color: white;
+    border-radius: 25px;
+    
+}
+.btn{
+       border: none;
+}

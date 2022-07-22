@@ -105,6 +105,7 @@ const setMovieDetails=(movie)=>{
         const uploadBoth = ()=>{
             // uploadFile()
             uploadMovie()
+            console.log("upload",uploadBoth)
         }
     
     
@@ -112,7 +113,9 @@ const setMovieDetails=(movie)=>{
 
     return (
          <>
-         
+         {props.movieData.map(el => <div><button onClick={()=>setMovieDetails(el)}>{el.title} {el.release_date}</button></div>)}
+        <input className="text-color" type="file" onChange={handleFileInput}/>
+            <button onClick={() => uploadBoth()}> Upload </button>
          <form onSubmit={handelPost}>
             <div>
              <h1 className="text-color">Upload can take up to 5 minutes</h1>
@@ -121,9 +124,7 @@ const setMovieDetails=(movie)=>{
               </div>
             
         </form>
-        {props.movieData.map(el => <div><button onClick={()=>setMovieDetails(el)}>{el.title} {el.release_date}</button></div>)}
-        <input className="text-color" type="file" onChange={handleFileInput}/>
-            <button onClick={() => uploadBoth()}> Upload </button>
+        
          </> 
     );
 }

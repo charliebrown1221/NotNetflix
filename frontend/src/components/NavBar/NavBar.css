@@ -12,7 +12,8 @@ li {
   background: rgb(255, 0, 0);
   box-shadow: 4px 2px 5px gray;
   color: white;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 2rem; 
+ 
 }
 
 .navBar button {
@@ -20,10 +21,9 @@ li {
   border: 2px solid white;
   color: white;
   padding: 0.4rem 0.5rem;
-  /* position:absolute;
+ 
 
-  top: 10%;
-  left: 90%; */
+  
   
 }
 

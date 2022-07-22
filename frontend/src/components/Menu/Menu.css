@@ -93,7 +93,7 @@ nav a:hover{
   text-align:center;
   font-size:2em;
   line-height:1.1em;
-  position:fixed;
+  position:absolute;
   top:191px;
   left:250px;
   -moz-transition:all 200ms ease-in;
