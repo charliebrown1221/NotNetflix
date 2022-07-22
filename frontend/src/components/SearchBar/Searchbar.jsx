@@ -22,7 +22,7 @@ const SearchBar = (props) => {
      <>
        <form onSubmit={handelFilter}>
         <div className="searchBar"> 
-      <input type='text' value={searchMovie} onChange={(event)=> setSearchMovie(event.target.value)} ></input>
+      <input className="box" type='text' value={searchMovie} onChange={(event)=> setSearchMovie(event.target.value)} ></input>
       
       <button className='button' type='submit' placeholder='What song are you looking for'>Search</button>
         </div>
