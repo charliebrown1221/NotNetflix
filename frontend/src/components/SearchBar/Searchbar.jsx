@@ -7,13 +7,14 @@ const SearchBar = (props) => {
     let  results = data.filter((item)  => {
         if (item.name === searchMovie||item.year === searchMovie||item.genres === searchMovie) {
             return true;}})
-        
+        console.log("results",results)
         props.setGetAllMoviesData(results)
         return results;
         }
         function handelFilter(event){
             event.preventDefault();
             FilterMovies(props.getAllMoviesData)
+            console.log("search",props.getAllMoviesData)
         }
 
 
@@ -24,7 +25,7 @@ const SearchBar = (props) => {
         <div className="searchBar"> 
       <input className="box" type='text' value={searchMovie} onChange={(event)=> setSearchMovie(event.target.value)} ></input>
       
-      <button className='button' type='submit' placeholder='What song are you looking for'>Search</button>
+      <button className='button' type='submit' >Search</button>
         </div>
         </form>
      </> 

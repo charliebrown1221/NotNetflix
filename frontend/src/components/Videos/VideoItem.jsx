@@ -20,12 +20,14 @@ const VideoItem = (props)=>{
         
            < >
            <div className='info'>
+            <div className='name'>{props.video.name}  </div>
            <div className='btn'><button onClick={()=>handleClose()} >X</button></div>
-           <div >{props.video.name}  </div>
-           <div >{props.video.year}</div>
-           <div >{props.video.genres}</div>
-           <div >{props.video.overview}</div>
-           <div><a href={`https://notnetflix2.s3.amazonaws.com/${props.video.fileName}`}> Play Video </a></div>
+           
+           <div className='video' ><a href={`https://notnetflix2.s3.amazonaws.com/${props.video.fileName}`}> Play Video </a></div>
+           <div className='year'>{props.video.year}</div>
+           <div className='genre'>{props.video.genres}</div>
+           <div className='over'>{props.video.overview}</div>
+           
            </div>
            </>
             :null}</div>
