@@ -103,7 +103,7 @@ const setMovieDetails=(movie)=>{
         }
 
         const uploadBoth = ()=>{
-            // uploadFile()
+            uploadFile()
             uploadMovie()
             console.log("upload",uploadBoth)
         }
