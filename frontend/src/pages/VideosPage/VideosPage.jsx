@@ -2,10 +2,15 @@ import React,{useEffect,useState} from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import "./VideoPage.css"
+import { useNavigate, Link } from "react-router-dom";
 import Videos from "../../components/Videos/Videos"
 import SearchBar from "../../components/SearchBar/SearchBar"
 import Menu from "../../components/Menu/Menu";
 import Navbar from "../../components/NavBar/NavBar";
+import Favorites from "../FavoritesPage/FavoritesPage";
+import FavoriteMovies from "../../components/FavoritesButton/FavoriteMovies";
+import { Route, Routes } from "react-router-dom";
+
 const VideoPage = (props) => {
     
     const[getMovieData, setGetMovieData]=useState([])
@@ -50,12 +55,17 @@ const VideoPage = (props) => {
     <>
     {/* <Navbar /> */}
     <Menu  getMovieData={getMovieData} getData={getData} getAllMovies={getAllMovies}  />
-    <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData}/> 
-   {/* <AddMovie movieData={getMovieData} getData={getData} getAllMovies={getAllMovies} /> */}
- 
+    <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData} getAllMovies={getAllMovies}/> 
     <div>
     <Videos getAllMoviesData={getAllMoviesData} />
     </div>
+    <div><Link to="/favorite" style={{ textDecoration: "none", color: "white" }}>
+            <b className="fav" >Favorite</b>
+          </Link>
+  <Routes>
+    <Route path="/favorite" element={<Favorites />} />
+    </Routes></div>
+    
     
     </> 
     );

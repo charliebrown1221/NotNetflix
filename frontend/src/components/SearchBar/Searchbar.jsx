@@ -4,14 +4,23 @@ const SearchBar = (props) => {
    const [searchMovie, setSearchMovie]=useState('')
    
    const FilterMovies = (data) =>  {
-    let  results = data.filter((item)  => {
-        if (item.name === searchMovie||item.year === searchMovie||item.genres === searchMovie) {
-            return true;}})
+    console.log(data)
+    if(searchMovie == ""){
+      props.getAllMovies()
+    }
+    else{
+      let  results = data.filter((item)  => {
+        if (item.name.toLowerCase().includes(searchMovie.toLowerCase())||item.year.includes(searchMovie)||item.genres.toLowerCase().includes(searchMovie.toLowerCase())) {
+          console.log(item)
+            return true;
+          }})
         console.log("results",results)
         props.setGetAllMoviesData(results)
         return results;
         }
-        function handelFilter(event){
+       
+    }
+     function handelFilter(event){
             event.preventDefault();
             FilterMovies(props.getAllMoviesData)
             console.log("search",props.getAllMoviesData)

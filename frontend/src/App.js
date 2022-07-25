@@ -22,7 +22,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path="/*"
           element={
             <PrivateRoute>
               <VideoPage />

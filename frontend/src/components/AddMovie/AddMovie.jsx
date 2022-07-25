@@ -115,7 +115,9 @@ const setMovieDetails=(movie)=>{
          <>
          <h1 className="text-color">Upload can take up to 5 minutes</h1>
          {props.movieData.map(el => <div><button onClick={()=>setMovieDetails(el)}>{el.title} {el.release_date}</button></div>)}
+
         <input className="text-color" type="file" onChange={handleFileInput}/>
+        
             <button className="btn" onClick={() => uploadBoth()}> Upload </button>
          <form onSubmit={handelPost}>
             <div>

@@ -1,14 +1,18 @@
 import React,{useEffect,useState} from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import FavoritesButton from "../../components/FavoritesButton/FavoritesButton";
+import FavoriteMovies from "../../components/FavoritesButton/FavoriteMovies";
 
 
 const Favorites = (props) => {
-const [favoriteMovies ,setFavoriteMovies]=useState([])
+const [favoriteMovieData ,setFavoriteMovies]=useState([])
 const [user, token] = useAuth();
 
 
-
+useEffect(() => {
+    allFavoriteMovies()
+  }, []);
 
 async function allFavoriteMovies(){
     try {
@@ -18,17 +22,18 @@ async function allFavoriteMovies(){
             },
           });
 
-        console.log("get favorite Movies: ", response.data)
+       
         setFavoriteMovies(response.data)
-        
+        console.log('allFavoriteMovies',response.data)
     } catch (error) {
-        console.log("allFavoriteMovies",error.response.data)
+        console.log("allFavoriteMovies err",error.response.data)
     }
 }
 
-async function favoritedMovie(){
+async function favoritedMovie(id){
+    console.log(id)
     try {
-        let response = await axios.post(`http://127.0.0.1:8000/api/favorites/add/${movie_id}`, {
+        let response = await axios.post(`http://127.0.0.1:8000/api/favorites/add/${id}`,{}, {
             headers: {
               Authorization: "Bearer " + token,
             },
@@ -38,28 +43,25 @@ async function favoritedMovie(){
            }
 
     } catch (error) {
-        console.log("uploadMovie" ,error.response.data)
+        console.log("Favorite" ,error.response.data)
     }
 }
 
 
 
 
+ 
 
 
 
 
-
-
-
-
-
-
-
-
-
-    return ( 
-        <></>
+    return ( <>
+        
+       <div>
+        
+        <FavoriteMovies favoriteMovieData={favoriteMovieData}/>
+        <FavoritesButton favoritedMovie={favoritedMovie}/></div>
+        </>
      );
 }
  
