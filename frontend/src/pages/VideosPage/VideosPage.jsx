@@ -56,15 +56,13 @@ const VideoPage = (props) => {
     {/* <Navbar /> */}
     <Menu  getMovieData={getMovieData} getData={getData} getAllMovies={getAllMovies}  />
     <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData} getAllMovies={getAllMovies}/> 
-    <div>
-    <Videos getAllMoviesData={getAllMoviesData} />
-    </div>
     <div><Link to="/favorite" style={{ textDecoration: "none", color: "white" }}>
             <b className="fav" >Favorite</b>
           </Link>
-  <Routes>
-    <Route path="/favorite" element={<Favorites />} />
-    </Routes></div>
+  </div><div>
+    <Videos getAllMoviesData={getAllMoviesData} />
+    </div>
+    
     
     
     </> 

@@ -7,7 +7,7 @@ import "./App.css";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import VideoPage from "./pages/VideosPage/VideosPage";
-
+import Favorites from "./pages/FavoritesPage/FavoritesPage";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -16,19 +16,22 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 
 
+
 function App() {
   return (
     <div>
       <Navbar />
       <Routes>
         <Route
-          path="/*"
+          path="/"
           element={
             <PrivateRoute>
               <VideoPage />
             </PrivateRoute>
           }
         />
+        <Route path="/favorite" element={<Favorites />} />
+        
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
