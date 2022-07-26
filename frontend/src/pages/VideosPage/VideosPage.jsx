@@ -57,7 +57,7 @@ const VideoPage = (props) => {
     <Menu  getMovieData={getMovieData} getData={getData} getAllMovies={getAllMovies}  />
     <SearchBar getAllMoviesData={getAllMoviesData}  setGetAllMoviesData={setGetAllMoviesData} getAllMovies={getAllMovies}/> 
     <div><Link to="/favorite" style={{ textDecoration: "none", color: "white" }}>
-            <b className="fav" >Favorite</b>
+            <b className="fav" >Favorites</b>
           </Link>
   </div><div>
     <Videos getAllMoviesData={getAllMoviesData} />
