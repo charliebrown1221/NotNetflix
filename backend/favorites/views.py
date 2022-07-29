@@ -31,3 +31,14 @@ def add_favorite_movie(request, movie_id):
       serializer = MoviesSerializer(movie, many=False)
       return Response(serializer.data, status=status.HTTP_201_CREATED)
    return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_favorite_movie(request, movie_id):
+   movie=Movies.objects.get(pk=movie_id)
+   user = User.objects.get(pk = request.user.id)
+   print(request.user.id)
+   if request.method == 'DELETE':
+      movie.favorites.delete(user)
+      return Response( status=status.HTTP_204_NO_CONTENT)
+   return Response(status=status.HTTP_400_BAD_REQUEST)
