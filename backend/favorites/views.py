@@ -39,6 +39,6 @@ def delete_favorite_movie(request, movie_id):
    user = User.objects.get(pk = request.user.id)
    print(request.user.id)
    if request.method == 'DELETE':
-      movie.favorites.delete()
+      movie.favorites.remove(user)
       return Response( status=status.HTTP_204_NO_CONTENT)
    return Response(status=status.HTTP_400_BAD_REQUEST)
