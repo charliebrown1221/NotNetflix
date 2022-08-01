@@ -33,7 +33,7 @@ const UnfavoriteButton = (props) => {
       return ( 
         <>
       
-         <b className="" onClick={() => UnfavoritedMovie()}>💔 </b>
+         <b className="btn4" onClick={() => UnfavoritedMovie()}>💔 </b>
          
         
         

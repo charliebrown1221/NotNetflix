@@ -24,6 +24,10 @@
     border-radius: 25px;
     
 }
+.btn4{
+    position: relative;
+    left: 460px;
+}
 .btn3{
 
 background-color: transparent;
@@ -57,7 +61,7 @@ left: 550px;
     
     position: relative;
     left: 500px;
-    bottom: 23px;
+    bottom: 25px;
     height: 20px;
     width: 20px;
 
